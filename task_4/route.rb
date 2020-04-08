@@ -5,9 +5,9 @@ class Route
   include InstanceCounter
 
   def initialize(start, finish)
-    @stations = [start, finish]
+    validate!(start, finish)
+    @stations= [start, finish]
     register_instance
-    validate!
   end
 
   def print # выводит список всех станций по-порядку от начальной до конечной
@@ -16,7 +16,6 @@ class Route
 
   def add_station(station)
     stations.insert(-2,station)
-    validate!
   end
 
   def delete_station(station)
@@ -41,7 +40,9 @@ class Route
   end
 
   protected
-  def validate!
+  def validate!(start, finish)
     raise "Недостаточно станций для создания" if Station.all.length < 2
+    raise "Добавленные элементы не вяляются станциями" unless start.is_a?(Station) && finish.is_a?(Station)
+    raise "Станции старта и финиша должны отличаться" if start == finish
   end
 end
