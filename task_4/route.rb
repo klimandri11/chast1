@@ -5,8 +5,8 @@ class Route
   include InstanceCounter
 
   def initialize(start, finish)
-    validate!(start, finish)
     @stations= [start, finish]
+    validate!
     register_instance
   end
 
@@ -40,9 +40,9 @@ class Route
   end
 
   protected
-  def validate!(start, finish)
+  def validate!
     raise "Недостаточно станций для создания" if Station.all.length < 2
-    raise "Добавленные элементы не вяляются станциями" unless start.is_a?(Station) && finish.is_a?(Station)
-    raise "Станции старта и финиша должны отличаться" if start == finish
+    raise "Добавленные элементы не вяляются станциями" unless @stations.first.is_a?(Station) && @stations.last.is_a?(Station)
+    raise "Станции старта и финиша должны отличаться" if @stations.first == @stations.last
   end
 end
