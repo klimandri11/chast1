@@ -274,7 +274,7 @@ class Interface
     puts "Выебрите вагон:"
     list_passenger_wagons
     index_wg = gets.chomp.to_i
-    @wagons_passenger[index_wg - 1].add_seat
+    @wagons_passenger[index_wg - 1].add_value(1)
   end
 
   def fill_volume
@@ -283,7 +283,7 @@ class Interface
     index_wg = gets.chomp.to_i
     puts "Какой объем вы хотите занять?"
     volume = gets.chomp.to_i
-    @wagons_cargo[index_wg - 1].fill_volume(volume)
+    @wagons_cargo[index_wg - 1].add_value(volume)
   end
 
 

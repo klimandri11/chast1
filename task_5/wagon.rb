@@ -12,4 +12,10 @@ class Wagon
     @total - @occupied
   end
 
+  def add_value(value)
+    if value <= free
+      @occupied += value
+    end
+  end
+
 end

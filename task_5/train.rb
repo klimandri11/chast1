@@ -16,7 +16,7 @@ class Train
     register_instance
   end
 
-  def train_block (wagons = @wagons, &block) # передаю блок в классе interface строки 213 и 219
+  def train_block (wagons = @wagons) # передаю блок в классе interface строки 213 и 219
     wagons.each { |wagon| yield(wagon) }
   end
 

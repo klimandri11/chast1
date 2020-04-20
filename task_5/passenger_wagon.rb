@@ -1,9 +1,7 @@
 class PassengerWagon < Wagon
 
-  def add_seat
-    if @occupied < @total
-      @occupied += 1
-    end
+  def add_value(value)
+    super(1)
   end
 
 end
