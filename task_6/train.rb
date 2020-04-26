@@ -79,13 +79,6 @@ class Train
     end
   end
 
-  def valid?
-    validate!
-    true
-  rescue
-    false
-  end
-
   protected
 
   def location # возвращает текущую станцию поезда

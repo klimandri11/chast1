@@ -40,11 +40,4 @@ class Station
     trains.count { |train| train.type == type }
   end
 
-  def valid?
-    validate!
-    true
-  rescue
-    false
-  end
-
 end

@@ -7,16 +7,15 @@ module Validation
 
   module ClassMethods
     def validate(name, type, dop_parametr = nil)
-      validations ||= {}
-      validations[name] ||= {}
-      validations[name][type] = dop_parametr
-      class_variable_set(:@@validations, validations)
+      @validations ||= {}
+      @validations[name] ||= {}
+      @validations[name][type] = dop_parametr
     end
   end
 
   module InstanceMethods
     def validate!
-      validations = self.class.class_variable_get(:@@validations)
+      validations = self.class.instance_variable_get(:@validations)
       validations.each_key do |name|
         var_name = "@#{name}".to_sym
         var_value = instance_variable_get(var_name)

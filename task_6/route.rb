@@ -34,13 +34,6 @@ class Route
     @stations[-1]
   end
 
-  def valid?
-    validate!
-    true
-  rescue
-    false
-  end
-
   protected
   def validate!
     raise "Недостаточно станций для создания" if Station.all.length < 2
